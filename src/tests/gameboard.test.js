@@ -40,6 +40,8 @@ test('Fire a missile on the board', () => {
     const computer = gameboardFactory().createShips();
     gameboardFactory().placeShips(computer.destroyer, 50, 'CD')
     gameboardFactory().placeShips(computer.battleship, 20, 'CB')
+    gameboardFactory().receiveAttack(20, 'CH', computer)
+    gameboardFactory().receiveAttack(21, 'CH', computer)
     gameboardFactory().receiveAttack(22, 'CH', computer)
 
     expect(gameboardFactory().receiveAttack(23, 'CH', computer)).toEqual(
@@ -50,5 +52,6 @@ test('Fire a missile on the board', () => {
         71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87,
         88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
     )
-    expect(computer.battleship.Hits).toEqual([22, 23])
+    expect(computer.battleship.Hits).toEqual([20, 21, 22, 23])
+    expect(computer.battleship.Destroyed).toEqual(true)
 })

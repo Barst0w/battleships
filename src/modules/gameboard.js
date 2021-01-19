@@ -1,13 +1,15 @@
 /* eslint-disable no-undef */
-import ship from './ship';
+import PlayGame from '../components/PlayGame';
+const ship = require('../modules/ship');
 // Represents an array for the board (We do need one for each player, don't forget)
-const gameboard = [];
+const playerGameBoard = [];
+const computerGameBoard = []
 const gameboardFactory = () => {
-    const createGameboard = () => {
+    const createGameboard = (name) => {
         for (let i = 0; i < 100; i++) {
-            gameboard.push(i)
+            name.push(i)
         }
-        return gameboard;
+        return name;
     }
     // Creates 5 ship objects and then assigns it to one object.
     const createShips = () => {
@@ -25,24 +27,16 @@ const gameboardFactory = () => {
             carrier: carrier
         }
     }
-    // Places the ships on the gameboard
-    const placeShips = (ship, location, name) => {
-        let newLocation = location;
-        for (let i = newLocation; i < location + ship.Length; ++i) {
-            gameboard.splice(i, 1, name)
-        }
-        return gameboard;
-    }
     // Receives an attack and then plots the coordinates, and if a ship gets hit, it then registers that and runs hit().
-    const receiveAttack = (location, player, computer) => {
+    const receiveAttack = (location, player, playerShips) => {
         if (Number.isInteger(gameboard[location])) gameboard.splice(location, 1, player);
         else {
-            if(gameboard[location] !== 'CH' || 'PH') ship().hit(gameboard[location], location, computer);
+            if(gameboard[location] !== 'CH' || 'PH') ship().hit(gameboard[location], location, playerShips);
         }
         return gameboard;
     }
 
-    return { gameboardFactory, createShips, createGameboard, placeShips, receiveAttack }
+    return { gameboardFactory, createShips, createGameboard, receiveAttack }
 }
 
-module.exports = gameboardFactory;
+export default gameboardFactory;

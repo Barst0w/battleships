@@ -9,22 +9,22 @@ const ship = () => {
     return ship;
 }
     // Registers a hit, updates the relevant ship object's hit key.
-    const hit = (name, location, computer) => {
+    const hit = (name, location, playerShips) => {
         let hitShip = '';
 
         if (name.startsWith('C')) {
-            if (name === 'CP') hitShip = computer.patrolboat;
-            if (name === 'CS') hitShip = computer.submarine;
-            if (name === 'CD') hitShip = computer.destroyer;
-            if (name === 'CB') hitShip = computer.battleship;
-            if (name === 'CC') hitShip = computer.carrier;
+            if (name === 'CP') hitShip = playerShips.patrolboat;
+            if (name === 'CS') hitShip = playerShips.submarine;
+            if (name === 'CD') hitShip = playerShips.destroyer;
+            if (name === 'CB') hitShip = playerShips.battleship;
+            if (name === 'CC') hitShip = playerShips.carrier;
         } 
         if (name.startsWith('P')) {
-            if (name === 'PP') hitShip = player.patrolboat;
-            if (name === 'PS') hitShip = player.submarine;
-            if (name === 'PD') hitShip = player.destroyer;
-            if (name === 'PB') hitShip = player.battleship;
-            if (name === 'PC') hitShip = player.carrier;
+            if (name === 'PP') hitShip = playerShips.patrolboat;
+            if (name === 'PS') hitShip = playerShips.submarine;
+            if (name === 'PD') hitShip = playerShips.destroyer;
+            if (name === 'PB') hitShip = playerShips.battleship;
+            if (name === 'PC') hitShip = playerShips.carrier;
         }
         hitShip.Hits.push(location)
         isSunk(hitShip);
