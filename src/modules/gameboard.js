@@ -2,8 +2,6 @@
 import PlayGame from '../components/PlayGame';
 const ship = require('../modules/ship');
 // Represents an array for the board (We do need one for each player, don't forget)
-const playerGameBoard = [];
-const computerGameBoard = []
 const gameboardFactory = () => {
     const createGameboard = (name) => {
         for (let i = 0; i < 100; i++) {

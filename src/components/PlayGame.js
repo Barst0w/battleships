@@ -14,7 +14,7 @@ const PlayGame = (props) => {
     const computerFunc = () => {
         let computerArr = [];
         for (let i = 0; i < 5; ++i) {
-            let randomNum = Math.floor(Math.random() * 100);
+            let randomNum = Math.floor(Math.random() * 95);
             let numTest = (value) => value < randomNum - 5 || value > randomNum + 5;
             if (!computerArr) computerArr.push(randomNum);
             else if (computerArr.every(numTest)) computerArr.push(randomNum);
@@ -30,7 +30,7 @@ const PlayGame = (props) => {
     const playerFunc = () => {
         let playerArr = [];
         for (let i = 0; i < 5; ++i) {
-            let randomNum = Math.floor(Math.random() * 100);
+            let randomNum = Math.floor(Math.random() * 95);
             let numTest = (value) => value < randomNum - 5 || value > randomNum + 5;
             if (!playerArr) playerArr.push(randomNum);
             else if (playerArr.every(numTest)) playerArr.push(randomNum);
@@ -43,16 +43,8 @@ const PlayGame = (props) => {
         placeShips(props.playerBoard, props.playerShips.carrier, playerArr[4], 'PC');
     } 
     playerFunc()
-
-        console.log(props.computerBoard)
-        console.log(props.playerBoard)
     return(
-        <div>
-            {props.computerBoard}
-            <br></br>
-            <br></br>
-            {props.playerBoard}
-        </div>
+        <div>Hi</div>
     )
 }
 
