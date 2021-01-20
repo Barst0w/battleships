@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import PlayGame from '../components/PlayGame';
 const ship = require('../modules/ship');
@@ -26,10 +27,14 @@ const gameboardFactory = () => {
         }
     }
     // Receives an attack and then plots the coordinates, and if a ship gets hit, it then registers that and runs hit().
-    const receiveAttack = (location, player, playerShips) => {
-        if (Number.isInteger(gameboard[location])) gameboard.splice(location, 1, player);
+    const receiveAttack = (location, player, gameboard, setGameboard) => {
+        if (Number.isInteger(location)) { 
+            gameboard.splice(location, 1, player);
+            const newArr = [...gameboard]
+            setGameboard(newArr);
+        }
         else {
-            if(gameboard[location] !== 'CH' || 'PH') ship().hit(gameboard[location], location, playerShips);
+            if(gameboard[location] !== 'CH' || 'PH') ship().hit(gameboard[location], location);
         }
         return gameboard;
     }

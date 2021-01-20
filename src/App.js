@@ -3,18 +3,24 @@ import  {React, useEffect, useState}  from 'react';
 import PlayGame from './components/PlayGame'
 import gameboardFactory from './modules/gameboard';
 import Interface from './components/Interface'
-// YOU CAN'T CHANGE STATE VIA PROPS. THAT'S WHY YOU'RE PROGRAM IS DOING THE WRONG NUMBERS, NEED TO UPDATE THE STATE THAT EXISTS IN PLAYGAME INTO APP
+// MAKE SURE THAT THE ARRAY AND OTHER FUNCTIONS ARE LOOKING FOR INTEGER, AND NOT A STRING, IF NOT, REMOVE THE PARSE INT AND KEEP IT AS A STRING.
 function App() {
     const [computerShips, setComputerShips] = useState(gameboardFactory().createShips());
     const [playerShips, setPlayerShips] = useState(gameboardFactory().createShips());
+    const [computerBoard, setComputerBoard] = useState([]);
+    const [playerBoard, setPlayerBoard] = useState([]);
 
-    const computerGameBoard = []
-    const playerGameBoard = []
-    const [computerBoard, setComputerBoard] = useState(gameboardFactory().createGameboard(computerGameBoard));
-    const [playerBoard, setPlayerBoard] = useState(gameboardFactory().createGameboard(playerGameBoard));
-    
-    const computerBoardState = (state) => {
-        setComputerBoard(state)
+    const logic = (input) => {
+        const location = (input.target.attributes['datatype'].value);
+        if (location.includes('C')) { 
+            let newLocation = location;
+            gameboardFactory().receiveAttack(newLocation, 'CH', computerBoard, setComputerBoard)
+         }
+        else {
+            let newLocation = parseInt(location, 10)
+            console.log(newLocation)
+            gameboardFactory().receiveAttack(newLocation, 'CH', computerBoard, setComputerBoard)
+        }
     }
 
     useEffect(() => {
@@ -23,10 +29,11 @@ function App() {
 
     return(
         <div>
-            <PlayGame computerBoardState={computerBoardState} playerShips={playerShips} computerShips={computerShips} computerBoard={computerBoard} playerBoard={playerBoard} setPlayerBoard={setPlayerBoard} setComputerBoard={setComputerBoard} setComputerShips={setComputerShips} setPlayerShips={setPlayerShips}/>
-            <Interface computerBoard={computerBoard} playerBoard={playerBoard} />
+            <PlayGame setComputerBoard={setComputerBoard} setPlayBoard={setPlayerBoard} playerShips={playerShips} computerShips={computerShips} computerBoard={computerBoard} playerBoard={playerBoard} setPlayerBoard={setPlayerBoard} setComputerBoard={setComputerBoard} setComputerShips={setComputerShips} setPlayerShips={setPlayerShips}/>
+            <Interface logic={logic} computerBoard={computerBoard} playerBoard={playerBoard} />
         </div>
     )
 }
 
 export default App;
+

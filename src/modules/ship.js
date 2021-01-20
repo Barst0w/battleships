@@ -9,15 +9,15 @@ const ship = () => {
     return ship;
 }
     // Registers a hit, updates the relevant ship object's hit key.
-    const hit = (name, location, playerShips) => {
+    const hit = (name, location, playerShips, computerShips) => {
         let hitShip = '';
 
         if (name.startsWith('C')) {
-            if (name === 'CP') hitShip = playerShips.patrolboat;
-            if (name === 'CS') hitShip = playerShips.submarine;
-            if (name === 'CD') hitShip = playerShips.destroyer;
-            if (name === 'CB') hitShip = playerShips.battleship;
-            if (name === 'CC') hitShip = playerShips.carrier;
+            if (name === 'CP') hitShip = computerShips.patrolboat;
+            if (name === 'CS') hitShip = computerShips.submarine;
+            if (name === 'CD') hitShip = computerShips.destroyer;
+            if (name === 'CB') hitShip = computerShips.battleship;
+            if (name === 'CC') hitShip = computerShips.carrier;
         } 
         if (name.startsWith('P')) {
             if (name === 'PP') hitShip = playerShips.patrolboat;

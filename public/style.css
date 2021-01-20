@@ -9,7 +9,7 @@ body {
 .display {
     display: grid;
     grid-template-columns: 1fr auto auto 1fr;
-    grid-template-rows: 10rem auto 1fr;
+    grid-template-rows: 8rem auto auto 1fr;
 }
 
 .playerUI {
@@ -20,7 +20,7 @@ body {
     width: 30rem;
     background-color: aquamarine;
     grid-column: 3 / 3;
-    grid-row: 2 / 2;
+    grid-row: 3 / 3;
     margin: 2rem;
 }
 
@@ -32,14 +32,26 @@ body {
     width: 30rem;
     background-color: aquamarine;
     grid-column: 2 / 2;
-    grid-row: 2 / 2;
+    grid-row: 3 / 3;
     margin: 2rem;
 }
 
-.computerTile {
-} 
+.computerTitle {
+    display: flex;
+    justify-content: center;
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    font-size: 2em;
+    margin: 0;
+}
 
-.playerTile {
+.playerTitle {
+    display: flex;
+    justify-content: center;
+    grid-column: 3 / 3;
+    grid-row: 2 / 2;
+    font-size: 2em;
+    margin: 0;
 }
 
 .computerTile:hover {
@@ -54,4 +66,7 @@ body {
     background-color: lightslategray;
 }
 
+.computerHitTile {
+    background-color: red;
+}
 
