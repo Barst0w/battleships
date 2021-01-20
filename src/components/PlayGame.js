@@ -22,7 +22,7 @@ const PlayGame = (props) => {
     const placeShips = (arrName, ship, location, name) => {
         let newLocation = location;
         for (let i = newLocation; i < location + ship.Length; ++i) {
-            arrName.splice(i, 1, name)
+            arrName.splice(i, 1, name + i)
         }
     }
 
@@ -70,7 +70,7 @@ const PlayGame = (props) => {
     }, [PlayGame])
 
     return(
-        <div>Battleships</div>
+        <div></div>
     )
 }
 

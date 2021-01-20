@@ -33,9 +33,6 @@ const gameboardFactory = () => {
             const newArr = [...gameboard]
             setGameboard(newArr);
         }
-        else {
-            if(gameboard[location] !== 'CH' || 'PH') ship().hit(gameboard[location], location);
-        }
         return gameboard;
     }
 
