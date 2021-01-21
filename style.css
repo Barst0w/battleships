@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    background-color: cornsilk;
+    font-family: 'Roboto';
+}
+
+.mainDiv {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto;
+}
+
+.title {
+    display: flex;
+    justify-self: center;
+    font-size: 3em;
+    grid-column: 2 / 2;
+    grid-row: 1 / 1;
+    margin: 1rem;
+    
+}
+
+.resetBtn {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    height: 3rem;
+    width: 8rem;
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    outline: none;
+    border: none;
+    background-color: aquamarine;
+}
+
+.resetBtn:hover {
+    background-color: coral;
+}
+
+.display {
+    display: grid;
+    grid-template-columns: 1fr auto auto 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-column: 2 / 2;
+}
+
+.playerUI {
+    display: grid;
+    grid-template-columns: repeat(10, 3rem);
+    grid-template-rows: repeat(10, 3rem);
+    height: 30rem;
+    width: 30rem;
+    background-color: aquamarine;
+    grid-column: 3 / 3;
+    grid-row: 3 / 3;
+    margin: 2rem;
+}
+
+.computerUI {
+    display: grid;
+    grid-template-columns: repeat(10, 3rem);
+    grid-template-rows: repeat(10, 3rem);
+    height: 30rem;
+    width: 30rem;
+    background-color: aquamarine;
+    grid-column: 2 / 2;
+    grid-row: 3 / 3;
+    margin: 2rem;
+}
+
+.computerTitle {
+    display: flex;
+    justify-content: center;
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    font-size: 2em;
+    margin: 0;
+    color: ;
+}
+
+.playerTitle {
+    display: flex;
+    justify-content: center;
+    grid-column: 3 / 3;
+    grid-row: 2 / 2;
+    font-size: 2em;
+    margin: 0;
+}
+
+.computerTile:hover {
+    background-color: coral;
+} 
+
+.computerShipTile:hover {
+    background-color: coral;
+}
+
+.playerTile:hover {
+    background-color: coral;
+}
+
+.playerShipTile:hover {
+    background-color: coral;
+}
+
+.computerHitTile {
+    background-color: coral;
+}
+
+.playerHitTile {
+    background-color: coral;
+}
+
+.computerShipHit {
+    background-color: lightslategrey;
+}
+
+.playerShipHit {
+    background-color: lightslategrey;
+}
+
+.computerDestroyedList {
+    margin-top: 4rem;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-column: 1 / 1;
+    grid-row: 3 / 3;
+}
+
+.playerDestroyedList {
+    margin-top: 4rem;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-column: 3 / 3;
+    grid-row: 3 / 3;
+}
+
+.displayDestroyedText {
+    color: blue;
+}
