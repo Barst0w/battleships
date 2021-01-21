@@ -6,7 +6,10 @@ import Interface from './components/Interface'
 const ship = require('./modules/ship');
 
 function App() {
-    const [appState, setAppState] = useState()
+    let computerDestroyedArr = ['Destroyed Ships:']
+    let playerDestroyedArr = ['Destroyed Ships:']
+    const [computerDestroyedState, setComputerDestroyedState] = useState(computerDestroyedArr)
+    const [playerDestroyedState, setPlayerDestroyedState] = useState(playerDestroyedArr)
     const [computerShips, setComputerShips] = useState(gameboardFactory().createShips());
     const [playerShips, setPlayerShips] = useState(gameboardFactory().createShips());
     const [playerBoard, setPlayerBoard] = useState([]);
@@ -47,10 +50,24 @@ function App() {
         (playerShips.carrier.Destroyed),
         ]
 
+        if ((computerWinArr[0] === true) && (!playerDestroyedArr.includes(computerShips.patrolboat))) {playerDestroyedArr.push(<br></br>, <br></br>, 'Patrolboat') && setPlayerDestroyedState(playerDestroyedArr)}
+        if ((computerWinArr[1] === true) && (!playerDestroyedArr.includes(computerShips.submarine))) {playerDestroyedArr.push(<br></br>, <br></br>, 'Submarine') && setPlayerDestroyedState(playerDestroyedArr)}
+        if ((computerWinArr[2] === true) && (!playerDestroyedArr.includes(computerShips.destroyer))) {playerDestroyedArr.push(<br></br>, <br></br>, 'Destroyer') && setPlayerDestroyedState(playerDestroyedArr)}
+        if ((computerWinArr[3] === true) && (!playerDestroyedArr.includes(computerShips.battleship))) {playerDestroyedArr.push(<br></br>, <br></br>, 'Battleship') && setPlayerDestroyedState(playerDestroyedArr)}
+        if ((computerWinArr[4] === true) && (!playerDestroyedArr.includes(computerShips.carrier))) {playerDestroyedArr.push(<br></br>, <br></br>, 'Carrier') && setPlayerDestroyedState(playerDestroyedArr)}
+
+        if ((playerWinArr[0] === true) && (!computerDestroyedArr.includes(playerShips.patrolboat))) {computerDestroyedArr.push(<br></br>, <br></br>, 'Patrolboat') && setComputerDestroyedState(computerDestroyedArr)}
+        if ((playerWinArr[1] === true) && (!computerDestroyedArr.includes(playerShips.submarine))) {computerDestroyedArr.push(<br></br>, <br></br>,'Submarine') && setComputerDestroyedState(computerDestroyedArr)}
+        if ((playerWinArr[2] === true) && (!computerDestroyedArr.includes(playerShips.destroyer))) {computerDestroyedArr.push(<br></br>, <br></br>, 'Destroyer') && setComputerDestroyedState(computerDestroyedArr)}
+        if ((playerWinArr[3] === true) && (!computerDestroyedArr.includes(playerShips.battleship))) {computerDestroyedArr.push(<br></br>, <br></br>, 'Battleship') && setComputerDestroyedState(computerDestroyedArr)}
+        if ((playerWinArr[4] === true) && (!computerDestroyedArr.includes(playerShips.carrier))) {computerDestroyedArr.push(<br></br>, <br></br>, 'Carrier') && setComputerDestroyedState(computerDestroyedArr)}
+                
         if (!computerWinArr.includes(false)) { 
-            alert('Player 1 Wins!');
-        } else if (!playerWinArr.includes(false)) {
             alert('Player 2 Wins!');
+            resetGame()
+        } else if (!playerWinArr.includes(false)) {
+            alert('Player 1 Wins!');
+            resetGame()
         }
     }
     return(
@@ -59,6 +76,8 @@ function App() {
             <button className="resetBtn" onClick={resetGame}>Reset Game</button>
             <PlayGame setComputerBoard={setComputerBoard} setPlayBoard={setPlayerBoard} playerShips={playerShips} computerShips={computerShips} computerBoard={computerBoard} playerBoard={playerBoard} setPlayerBoard={setPlayerBoard} setComputerShips={setComputerShips} setPlayerShips={setPlayerShips}/>
             <Interface logic={logic} computerBoard={computerBoard} playerBoard={playerBoard} />
+            <div className="computerDestroyedList">{computerDestroyedState}</div>
+            <div className="playerDestroyedList">{playerDestroyedState}</div>
         </div>
     )
 }

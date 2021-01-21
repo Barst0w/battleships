@@ -32,6 +32,13 @@ body {
     width: 8rem;
     grid-column: 2 / 2;
     grid-row: 2 / 2;
+    outline: none;
+    border: none;
+    background-color: aquamarine;
+}
+
+.resetBtn:hover {
+    background-color: coral;
 }
 
 .display {
@@ -114,4 +121,32 @@ body {
 
 .playerShipHit {
     background-color: lightslategrey;
+}
+
+.computerDestroyedList {
+    margin-top: 4rem;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-column: 1 / 1;
+    grid-row: 3 / 3;
+}
+
+.playerDestroyedList {
+    margin-top: 4rem;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-column: 3 / 3;
+    grid-row: 3 / 3;
+}
+
+.displayDestroyedText {
+    color: blue;
 }

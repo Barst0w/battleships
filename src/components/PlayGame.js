@@ -70,7 +70,7 @@ const PlayGame = (props) => {
     }, [PlayGame])
 
     return(
-        <div></div>
+        null
     )
 }
 
